@@ -10,6 +10,7 @@ interface drawerProps {
   imageUrl: string;
   name: string;
   weight: number;
+  price: number;
   children: JSX.Element;
 }
 
@@ -18,6 +19,7 @@ const CardDrawer: React.FC<drawerProps> = ({
   imageUrl,
   name,
   weight,
+  price,
   children,
 }) => {
   console.log(metadata);
@@ -26,7 +28,7 @@ const CardDrawer: React.FC<drawerProps> = ({
     <Drawer>
       <DrawerTrigger asChild>{children}</DrawerTrigger>
       <DrawerContent>
-        <div className="flex flex-col gap-7 px-4 py-10">
+        <div className="flex flex-col gap-6 px-4 py-10">
           <div className="flex h-auto w-auto">
             <Image
               src={imageUrl}
@@ -64,6 +66,10 @@ const CardDrawer: React.FC<drawerProps> = ({
             <div className="p-4 rounded-full bg-card-bg">
               <Heart />
             </div>
+          </div>
+          <div className="flex justify-between px-6 py-4 text-white bg-black rounded-full font-semibold text-xl">
+            <p>To cart</p>
+            <p>{`$${price}`}</p>
           </div>
         </div>
       </DrawerContent>

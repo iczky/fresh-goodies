@@ -39,7 +39,8 @@ const Card: React.FC<cardProps> = ({ img, price, name, weight, metadata }) => {
             imageUrl={img}
             metadata={metadata}
             name={name}
-            weight={weightCard}>
+            weight={weightCard}
+            price={priceCard}>
             <Image
               src={img}
               width={1000}
