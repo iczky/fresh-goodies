@@ -11,7 +11,6 @@ export default function Home() {
       <ProductsProvider>
         <Navbar />
         <CardWrapper />
-        <CardDrawer />
       </ProductsProvider>
     </>
   );

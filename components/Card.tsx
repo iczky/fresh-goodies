@@ -35,7 +35,11 @@ const Card: React.FC<cardProps> = ({ img, price, name, weight, metadata }) => {
     <div className="px-4 py-4 rounded-lg bg-card-bg">
       <div className="flex flex-col gap-5">
         <div className="flex w-auto h-auto">
-          <CardDrawer imageUrl={img} metadata={metadata} name={name}>
+          <CardDrawer
+            imageUrl={img}
+            metadata={metadata}
+            name={name}
+            weight={weightCard}>
             <Image
               src={img}
               width={1000}
