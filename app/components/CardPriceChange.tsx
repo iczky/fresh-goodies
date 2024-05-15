@@ -19,7 +19,7 @@ const CardPriceChange: React.FC<cardChangeProps> = ({
         size={40}
         onClick={handleMinus}
       />
-      <p className="opacity-50">{`${weight.toFixed(2)} KG`}</p>
+      <p className="opacity-50 text-sm">{`${weight.toFixed(2)} KG`}</p>
       <CirclePlus
         fill="black"
         className="text-white"

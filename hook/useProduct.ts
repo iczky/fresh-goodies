@@ -15,6 +15,7 @@ const useProduct = () => {
         const uniqueCategory = [
           ...new Set<string>(data.map((item) => item.category)),
         ];
+
         setCategory(uniqueCategory);
         setProducts(data);
       } catch (error) {

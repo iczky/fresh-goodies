@@ -1,9 +1,10 @@
 "use client";
 
+import { useProductContext } from "@/hook/ProductsProvider";
 import useProduct from "@/hook/useProduct";
 
 const NavCategory = () => {
-  const { category } = useProduct();
+  const { category } = useProductContext();
 
   return (
     <div className="flex overflow-hidden overflow-x-scroll gap-8 pl-7 py-3 text-nowrap">

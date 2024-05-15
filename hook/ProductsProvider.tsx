@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ReactNode,
   createContext,
@@ -6,16 +8,7 @@ import {
   useState,
 } from "react";
 import { Product } from "@/types/product";
-
-interface ProductContextProps {
-  products: Product[];
-  loading: boolean;
-  category: string[];
-}
-
-const ProductContext = createContext<ProductContextProps | undefined>(
-  undefined
-);
+import ProductContext from "./productsContext";
 
 const ProductsProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<Product[]>([]);

@@ -1,6 +1,8 @@
 "use client";
 
+import CardDrawer from "@/app/components/CardDrawer";
 import CardPriceChange from "@/app/components/CardPriceChange";
+import { Metadata } from "@/types/product";
 import { CirclePlus } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -10,9 +12,10 @@ interface cardProps {
   price: number;
   name: string;
   weight: number;
+  metadata: Metadata;
 }
 
-const Card: React.FC<cardProps> = ({ img, price, name, weight }) => {
+const Card: React.FC<cardProps> = ({ img, price, name, weight, metadata }) => {
   const [priceCard, setPriceCard] = useState<number>(price * 1000);
   const [weightCard, setWeightCard] = useState<number>(weight / 1000);
   const [isShow, setIsShow] = useState<boolean>(false);
@@ -32,13 +35,15 @@ const Card: React.FC<cardProps> = ({ img, price, name, weight }) => {
     <div className="px-4 py-4 rounded-lg bg-card-bg">
       <div className="flex flex-col gap-5">
         <div className="flex w-auto h-auto">
-          <Image
-            src={img}
-            width={1000}
-            height={1000}
-            alt="Card Img"
-            className="mix-blend-darken object-cover aspect-square"
-          />
+          <CardDrawer imageUrl={img} metadata={metadata} name={name}>
+            <Image
+              src={img}
+              width={1000}
+              height={1000}
+              alt="Card Img"
+              className="mix-blend-darken object-cover aspect-square"
+            />
+          </CardDrawer>
         </div>
         <div className="flex flex-col gap-2">
           <h2 className="font-semibold text-xl">{`$${priceCard.toFixed(
