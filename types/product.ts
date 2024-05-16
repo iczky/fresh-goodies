@@ -14,7 +14,7 @@ export interface Product {
 
 export interface Metadata {
   unit: string;
-  increment: number,
+  increment: number;
   weight: number;
   calorie: number;
   proteins: number;

@@ -6,24 +6,28 @@ import { Metadata } from "@/types/product";
 import { CirclePlus } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
+import { Product } from "@/types/product";
+import { useShoppingCart } from "@/hook/ShoopingCartProvider";
 
-interface cardProps {
-  img: string;
-  price: number;
-  name: string;
-  weight: number;
-  metadata: Metadata;
-}
+interface cardProps extends Product {}
 
-const Card: React.FC<cardProps> = ({ img, price, name, weight, metadata }) => {
+const Card: React.FC<cardProps> = (props) => {
+  const { price, name, weight, metadata, imageUrl } = props;
+
+  const { addItem } = useShoppingCart();
+
   const [priceCard, setPriceCard] = useState<number>(price * 1000);
   const [weightCard, setWeightCard] = useState<number>(weight / 1000);
   const [isShow, setIsShow] = useState<boolean>(false);
 
-  const handleClick = () => {
+  // handle click should exist on cart's logic (addItem)
+  // logic for the calculation of price and weight shoud exist on utils
+
+  const handleAddToCart = () => {
     setIsShow(true);
     setPriceCard((prev) => prev + price * 100);
     setWeightCard((prev) => prev + 0.1);
+    addItem(props, 100);
   };
 
   const handleClickMinus = () => {
@@ -35,14 +39,9 @@ const Card: React.FC<cardProps> = ({ img, price, name, weight, metadata }) => {
     <div className="px-4 py-4 rounded-lg bg-card-bg">
       <div className="flex flex-col gap-5">
         <div className="flex w-auto h-auto">
-          <CardDrawer
-            imageUrl={img}
-            metadata={metadata}
-            name={name}
-            weight={weightCard}
-            price={priceCard}>
+          <CardDrawer {...props} price={priceCard} weight={weightCard}>
             <Image
-              src={img}
+              src={imageUrl}
               width={1000}
               height={1000}
               alt="Card Img"
@@ -59,13 +58,13 @@ const Card: React.FC<cardProps> = ({ img, price, name, weight, metadata }) => {
         {isShow ? (
           <CardPriceChange
             weight={weightCard}
-            handleAdd={handleClick}
+            handleAdd={handleAddToCart}
             handleMinus={handleClickMinus}
           />
         ) : (
           <div className="flex justify-between items-center">
             <p className="opacity-50">{`${weightCard.toFixed(2)} KG`}</p>
-            <CirclePlus size={30} onClick={handleClick} />
+            <CirclePlus size={30} onClick={handleAddToCart} />
           </div>
         )}
       </div>

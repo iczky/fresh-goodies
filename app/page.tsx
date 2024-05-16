@@ -4,14 +4,13 @@ import Image from "next/image";
 import CardWrapper from "./components/CardWrapper";
 import CardDrawer from "./components/CardDrawer";
 import { ProductsProvider } from "@/hook/ProductsProvider";
+import { ShoppingCartProvider } from "@/hook/ShoopingCartProvider";
 
 export default function Home() {
   return (
     <>
-      <ProductsProvider>
-        <Navbar />
-        <CardWrapper />
-      </ProductsProvider>
+      <Navbar />
+      <CardWrapper />
     </>
   );
 }

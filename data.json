@@ -1,9 +1,49 @@
 {
-  "favorite-products": [{ "productId": 0 }, { "productId": 1 }],
-  "cart": [
+  "favorite-products": [
     {
       "productId": 0,
-      "quantity": 1000
+      "id": "08da"
+    },
+    {
+      "productId": 1,
+      "id": "ef52"
+    }
+  ],
+  "cart": [
+    {
+      "id": "0",
+      "productId": "0",
+      "quantity": 200
+    },
+    {
+      "id": "0",
+      "productId": "0",
+      "quantity": 100
+    },
+    {
+      "id": "1",
+      "productId": "1",
+      "quantity": 100
+    },
+    {
+      "id": "0",
+      "productId": "0",
+      "quantity": 100
+    },
+    {
+      "id": "3",
+      "productId": "3",
+      "quantity": 300
+    },
+    {
+      "id": "0",
+      "productId": "0",
+      "quantity": 100
+    },
+    {
+      "id": "0",
+      "productId": "0",
+      "quantity": 100
     }
   ],
   "products": [
@@ -22,7 +62,7 @@
         "increment": 100,
         "carbs": 2
       },
-      "id": 0
+      "id": "0"
     },
     {
       "price": 0.0033,
@@ -39,7 +79,7 @@
         "increment": 100,
         "carbs": 3.6
       },
-      "id": 1
+      "id": "1"
     },
     {
       "price": 0.0027,
@@ -56,7 +96,7 @@
         "increment": 100,
         "carbs": 9.3
       },
-      "id": 2
+      "id": "2"
     },
     {
       "price": 0.004,
@@ -73,7 +113,7 @@
         "increment": 100,
         "carbs": 9.3
       },
-      "id": 3
+      "id": "3"
     },
     {
       "price": 0.0028,
@@ -90,7 +130,7 @@
         "increment": 100,
         "carbs": 17
       },
-      "id": 4
+      "id": "4"
     },
     {
       "price": 0.0032,
@@ -107,7 +147,7 @@
         "increment": 100,
         "carbs": 29.9
       },
-      "id": 5
+      "id": "5"
     },
     {
       "price": 0.0045,
@@ -124,7 +164,7 @@
         "increment": 100,
         "carbs": 9
       },
-      "id": 6
+      "id": "6"
     },
     {
       "price": 0.005,
@@ -141,7 +181,7 @@
         "increment": 100,
         "carbs": 2
       },
-      "id": 7
+      "id": "7"
     },
     {
       "price": 0.006,
@@ -158,7 +198,7 @@
         "increment": 100,
         "carbs": 82.4
       },
-      "id": 8
+      "id": "8"
     },
     {
       "price": 0.0025,
@@ -175,7 +215,7 @@
         "increment": 100,
         "carbs": 9.6
       },
-      "id": 9
+      "id": "9"
     },
     {
       "price": 0.0038,
@@ -192,7 +232,7 @@
         "increment": 100,
         "carbs": 10
       },
-      "id": 10
+      "id": "10"
     },
     {
       "price": 0.007,
@@ -209,7 +249,7 @@
         "increment": 100,
         "carbs": 67
       },
-      "id": 11
+      "id": "11"
     },
     {
       "price": 0.0085,
@@ -226,7 +266,7 @@
         "increment": 100,
         "carbs": 0
       },
-      "id": 12
+      "id": "12"
     },
     {
       "price": 0.0028,
@@ -243,7 +283,7 @@
         "increment": 100,
         "carbs": 18
       },
-      "id": 13
+      "id": "13"
     },
     {
       "price": 0.004,
@@ -260,7 +300,7 @@
         "increment": 100,
         "carbs": 17
       },
-      "id": 14
+      "id": "14"
     },
     {
       "price": 0.0055,
@@ -277,7 +317,7 @@
         "increment": 100,
         "carbs": 19
       },
-      "id": 15
+      "id": "15"
     },
     {
       "price": 0.0048,
@@ -294,7 +334,7 @@
         "increment": 100,
         "carbs": 3.4
       },
-      "id": 16
+      "id": "16"
     },
     {
       "price": 0.0065,
@@ -311,7 +351,7 @@
         "increment": 100,
         "carbs": 40
       },
-      "id": 17
+      "id": "17"
     },
     {
       "price": 0.0035,
@@ -328,7 +368,7 @@
         "increment": 100,
         "carbs": 20.1
       },
-      "id": 18
+      "id": "18"
     },
     {
       "price": 0.0022,
@@ -345,7 +385,7 @@
         "increment": 100,
         "carbs": 8.8
       },
-      "id": 19
+      "id": "19"
     },
     {
       "price": 0.0075,
@@ -362,7 +402,7 @@
         "increment": 100,
         "carbs": 76
       },
-      "id": 20
+      "id": "20"
     },
     {
       "price": 0.0042,
@@ -379,7 +419,7 @@
         "increment": 100,
         "carbs": 2.4
       },
-      "id": 21
+      "id": "21"
     },
     {
       "price": 0.0058,
@@ -396,7 +436,7 @@
         "increment": 100,
         "carbs": 21
       },
-      "id": 22
+      "id": "22"
     },
     {
       "price": 0.003,
@@ -413,7 +453,7 @@
         "increment": 100,
         "carbs": 27.9
       },
-      "id": 23
+      "id": "23"
     },
     {
       "price": 0.0026,
@@ -430,7 +470,7 @@
         "increment": 100,
         "carbs": 3.9
       },
-      "id": 24
+      "id": "24"
     },
     {
       "price": 0.0033,
@@ -447,7 +487,7 @@
         "increment": 100,
         "carbs": 3.6
       },
-      "id": 25
+      "id": "25"
     },
     {
       "price": 0.0029,
@@ -464,7 +504,7 @@
         "increment": 100,
         "carbs": 2.9
       },
-      "id": 26
+      "id": "26"
     },
     {
       "price": 0.0041,
@@ -481,7 +521,7 @@
         "increment": 100,
         "carbs": 6
       },
-      "id": 27
+      "id": "27"
     },
     {
       "price": 0.0037,
@@ -498,7 +538,7 @@
         "increment": 100,
         "carbs": 3.1
       },
-      "id": 28
+      "id": "28"
     },
     {
       "price": 0.0034,
@@ -515,7 +555,7 @@
         "increment": 100,
         "carbs": 3.6
       },
-      "id": 29
+      "id": "29"
     },
     {
       "price": 0.003,
@@ -532,7 +572,7 @@
         "increment": 100,
         "carbs": 6.6
       },
-      "id": 30
+      "id": "30"
     },
     {
       "price": 0.004,
@@ -549,7 +589,7 @@
         "increment": 100,
         "carbs": 8.8
       },
-      "id": 31
+      "id": "31"
     },
     {
       "price": 0.0055,
@@ -566,7 +606,7 @@
         "increment": 100,
         "carbs": 3.9
       },
-      "id": 32
+      "id": "32"
     },
     {
       "price": 0.0036,
@@ -583,7 +623,7 @@
         "increment": 100,
         "carbs": 7.1
       },
-      "id": 33
+      "id": "33"
     }
   ]
 }

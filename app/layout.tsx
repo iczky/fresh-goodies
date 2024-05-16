@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ProductsProvider } from "@/hook/ProductsProvider";
+import { ShoppingCartProvider } from "@/hook/ShoopingCartProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +17,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="font-sf-pro">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ProductsProvider>
+      <ShoppingCartProvider>
+        <html lang="en" className="font-sf-pro">
+          <body className={inter.className}>{children}</body>
+        </html>
+      </ShoppingCartProvider>
+    </ProductsProvider>
   );
 }

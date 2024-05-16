@@ -1,34 +1,25 @@
 "use client";
 
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import { Metadata } from "@/types/product";
+import { Metadata, Product } from "@/types/product";
 import { Heart, Minus, Plus } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import CartDrawer from "./CartDrawer";
 
-interface drawerProps {
-  metadata: Metadata;
-  imageUrl: string;
-  name: string;
-  weight: number;
+interface drawerProps extends Product {
   price: number;
+  weight: number;
   children: JSX.Element;
 }
 
-const CardDrawer: React.FC<drawerProps> = ({
-  metadata,
-  imageUrl,
-  name,
-  weight,
-  price,
-  children,
-}) => {
-  console.log(metadata);
-
+const CardDrawer: React.FC<drawerProps> = ({ children, ...props }) => {
+  const { imageUrl, name, metadata, price, weight } = props;
   return (
     <Drawer>
       <DrawerTrigger asChild>{children}</DrawerTrigger>
       <DrawerContent>
-        <div className="flex flex-col gap-6 px-4 py-10">
+        <div className="flex flex-col gap-3 px-4 py-10">
           <div className="flex h-auto w-auto">
             <Image
               src={imageUrl}
@@ -67,10 +58,12 @@ const CardDrawer: React.FC<drawerProps> = ({
               <Heart />
             </div>
           </div>
-          <div className="flex justify-between px-6 py-4 text-white bg-black rounded-full font-semibold text-xl">
-            <p>To cart</p>
-            <p>{`$${price}`}</p>
-          </div>
+          <CartDrawer>
+            <div className="flex justify-between px-6 py-4 text-white bg-black rounded-full font-semibold text-xl">
+              <p>To cart</p>
+              <p>{`$${price.toFixed(2)}`}</p>
+            </div>
+          </CartDrawer>
         </div>
       </DrawerContent>
     </Drawer>
