@@ -9,30 +9,56 @@ import { useState } from "react";
 import { Product } from "@/types/product";
 import { useShoppingCart } from "@/hook/ShoopingCartProvider";
 
-interface cardProps extends Product {}
+interface cardProps extends Product {
+  isShow: boolean;
+  onToggleShow: (show: boolean) => void;
+}
 
 const Card: React.FC<cardProps> = (props) => {
-  const { price, name, weight, metadata, imageUrl } = props;
+  const { price, name, weight, metadata, imageUrl, isShow, onToggleShow, id } =
+    props;
 
-  const { addItem } = useShoppingCart();
-
-  const [priceCard, setPriceCard] = useState<number>(price * 1000);
+  const [isShowCard, setIsShowCard] = useState<boolean>(false);
+  const [priceCard, setPriceCard] = useState<number>(price * weight);
   const [weightCard, setWeightCard] = useState<number>(weight / 1000);
-  const [isShow, setIsShow] = useState<boolean>(false);
+
+  const { addItem, getTotalPrice, removeItem } = useShoppingCart();
 
   // handle click should exist on cart's logic (addItem)
   // logic for the calculation of price and weight shoud exist on utils
 
+  const weightInKg = weight / 1000;
   const handleAddToCart = () => {
-    setIsShow(true);
-    setPriceCard((prev) => prev + price * 100);
-    setWeightCard((prev) => prev + 0.1);
-    addItem(props, 100);
+    if (weightInKg === weightCard && !isShowCard) {
+      const initialQuantity = weightCard;
+
+      addItem(props, initialQuantity);
+      setIsShowCard(true);
+      onToggleShow(true);
+    } else if (isShowCard || weightCard > weightInKg) {
+      const initialQuantity = metadata.increment / 1000;
+
+      addItem(props, initialQuantity);
+      setPriceCard((prevPrice) => prevPrice + price * 100);
+      setWeightCard((prevWeight) => prevWeight + 0.1);
+    } else {
+      removeItem(id);
+      setIsShowCard(false);
+      onToggleShow(false);
+    }
   };
 
   const handleClickMinus = () => {
-    setPriceCard((prev) => prev - price * 100);
-    setWeightCard((prev) => prev - 0.1);
+    if (weightCard > weightInKg) {
+      const reduceQuantity = -0.1;
+      addItem(props, reduceQuantity);
+      setPriceCard((prevPrice) => prevPrice - price * 100);
+      setWeightCard((prevWeight) => prevWeight - 0.1);
+    } else {
+      removeItem(id);
+      setIsShowCard(false);
+      onToggleShow(false);
+    }
   };
 
   return (
@@ -55,7 +81,7 @@ const Card: React.FC<cardProps> = (props) => {
           )}`}</h2>
           <p className="text-lg">{name}</p>
         </div>
-        {isShow ? (
+        {isShowCard ? (
           <CardPriceChange
             weight={weightCard}
             handleAdd={handleAddToCart}

@@ -78,6 +78,7 @@ export const ShoppingCartProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const removeItem = (productId: number) => {
+    removeItemToDb(productId);
     setItems((prevItems) =>
       prevItems.filter((prevItem) => prevItem.productId !== productId)
     );
@@ -99,10 +100,23 @@ export const ShoppingCartProvider: React.FC<{ children: ReactNode }> = ({
   const getTotalPrice = () => {
     const eachTotal = items.map((each) => {
       const currentProduct = products.find((i) => i.id === each.productId);
-      if (currentProduct) return each.quantity * currentProduct.price;
+      if (currentProduct) return each.quantity * 1000 * currentProduct.price;
       return 0;
     });
     return eachTotal.reduce((total, item) => total + item);
+  };
+
+  const removeItemToDb = async (productId: number) => {
+    try {
+      const response = await fetch(`http://localhost:8080/cart/${productId}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error(`Failed to remove item with id ${productId}`);
+      }
+    } catch (error) {
+      console.error("error remove", error);
+    }
   };
 
   const updateItemToDb = async (updatedItem: CartItem) => {

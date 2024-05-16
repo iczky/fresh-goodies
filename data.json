@@ -13,37 +13,22 @@
     {
       "id": "0",
       "productId": "0",
-      "quantity": 200
-    },
-    {
-      "id": "0",
-      "productId": "0",
-      "quantity": 100
+      "quantity": 1.2000000000000002
     },
     {
       "id": "1",
       "productId": "1",
-      "quantity": 100
-    },
-    {
-      "id": "0",
-      "productId": "0",
-      "quantity": 100
+      "quantity": 1.5000000000000002
     },
     {
       "id": "3",
       "productId": "3",
-      "quantity": 300
+      "quantity": 1.6
     },
     {
-      "id": "0",
-      "productId": "0",
-      "quantity": 100
-    },
-    {
-      "id": "0",
-      "productId": "0",
-      "quantity": 100
+      "id": "4",
+      "productId": "4",
+      "quantity": 2.1
     }
   ],
   "products": [
