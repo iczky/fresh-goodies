@@ -7,13 +7,28 @@ import Image from "next/image";
 
 const ItemsCart: React.FC<CartItem> = (props) => {
   const { products } = useProductContext();
-  const { items } = useShoppingCart();
+  const { items, addItem, removeItem } = useShoppingCart();
 
   const currentProduct = products.find((i) => i.id === props.productId);
+  const currentItem = items.find((i) => i.productId === props.productId);
 
   if (!currentProduct) {
     return <div className="">Error</div>;
   }
+
+  const handleAdd = () => {
+    const quantityToAdd = currentItem
+      ? currentProduct.metadata / 1000
+      : currentProduct.weight / 1000;
+    addItem(currentProduct, quantityToAdd);
+  };
+
+  const handleMinus = () => {
+    addItem(currentProduct, -(currentProduct.metadata.increment / 1000));
+    if (currentItem?.quantity <= weight / 1000) {
+      removeItem(currentProduct.id);
+    }
+  };
 
   const weight = (currentProduct.weight * props.quantity) / 1000;
   const price = currentProduct.price * weight * 1000;
@@ -33,11 +48,11 @@ const ItemsCart: React.FC<CartItem> = (props) => {
         <div className="flex justify-between">
           <div className="flex justify-between items-center gap-3">
             <div className="bg-card-bg rounded-full p-1">
-              <Minus />
+              <Minus onClick={handleMinus} />
             </div>
             <p>{`${weight.toFixed(2)} kg`}</p>
             <div className="bg-card-bg rounded-full p-1">
-              <Plus />
+              <Plus onClick={handleAdd} />
             </div>
           </div>
         </div>

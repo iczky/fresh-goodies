@@ -9,7 +9,7 @@ const CartWrapper = () => {
 
   return (
     <div className="flex flex-col gap-3">
-      <h1 className="px-8">Cart</h1>
+      <h1 className="px-4 font-bold text-2xl">Cart</h1>
       <div className="flex flex-col">
         {items.map((item) => (
           <ItemsCart {...item} key={item.productId} />

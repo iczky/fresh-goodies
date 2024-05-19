@@ -1,10 +1,7 @@
 import { useShoppingCart } from "@/hook/ShoopingCartProvider";
 import CartDrawer from "./CartDrawer";
 
-const ToCartButton = () => {
-  const { getTotalPrice } = useShoppingCart();
-
-  const totalPrice = getTotalPrice();
+const ToCartButton: React.FC<{ totalPrice: number }> = ({ totalPrice }) => {
   return (
     <CartDrawer>
       <div className="px-5">

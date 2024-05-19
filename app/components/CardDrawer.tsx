@@ -2,19 +2,35 @@
 
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { Metadata, Product } from "@/types/product";
-import { Heart, Minus, Plus } from "lucide-react";
+import { ArrowRight, Heart, Minus, Plus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import CartDrawer from "./CartDrawer";
+import { useShoppingCart } from "@/hook/ShoopingCartProvider";
 
 interface drawerProps extends Product {
-  price: number;
-  weight: number;
   children: JSX.Element;
+  weightCard: number | undefined;
+  handleAdd: () => void;
+  handleMinus: () => void;
 }
 
-const CardDrawer: React.FC<drawerProps> = ({ children, ...props }) => {
-  const { imageUrl, name, metadata, price, weight } = props;
+const CardDrawer: React.FC<drawerProps> = ({
+  children,
+  imageUrl,
+  name,
+  metadata,
+  price,
+  weight,
+  weightCard,
+  handleAdd,
+  handleMinus,
+}) => {
+  const { getTotalPrice } = useShoppingCart();
+
+  const totalPrice = getTotalPrice().toFixed(2);
+  const weightDrawer = weightCard && weightCard.toFixed(2);
+
   return (
     <Drawer>
       <DrawerTrigger asChild>{children}</DrawerTrigger>
@@ -50,9 +66,9 @@ const CardDrawer: React.FC<drawerProps> = ({ children, ...props }) => {
           </div>
           <div className="flex gap-3">
             <div className="py-4 px-2 flex justify-between bg-card-bg rounded-full basis-[80%]">
-              <Minus />
-              <p>{`${weight.toFixed(2)} kg`}</p>
-              <Plus />
+              <Minus onClick={handleMinus} />
+              <p>{`${weightDrawer} kg`}</p>
+              <Plus onClick={handleAdd} />
             </div>
             <div className="p-4 rounded-full bg-card-bg">
               <Heart />
@@ -61,7 +77,7 @@ const CardDrawer: React.FC<drawerProps> = ({ children, ...props }) => {
           <CartDrawer>
             <div className="flex justify-between px-6 py-4 text-white bg-black rounded-full font-semibold text-xl">
               <p>To cart</p>
-              <p>{`$${price.toFixed(2)}`}</p>
+              <p>{`$${totalPrice}`}</p>
             </div>
           </CartDrawer>
         </div>

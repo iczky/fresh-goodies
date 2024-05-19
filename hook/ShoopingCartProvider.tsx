@@ -35,6 +35,7 @@ export const ShoppingCartProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [items, setItems] = useState<CartItem[]>([]);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
   const { products } = useProductContext();
 
   useEffect(() => {
@@ -48,16 +49,23 @@ export const ShoppingCartProvider: React.FC<{ children: ReactNode }> = ({
         console.log(error, "=======Error=========");
       }
     };
+
+    fetchData();
   }, []);
+
+  // useEffect(() => {
+  //   //update total price here
+  // }, [items]);
 
   const addItem = (product: Product, quantity: number) => {
     const newItem = { productId: product.id, quantity };
+    console.log(items, "=====item=====");
 
     setItems((prevItems) => {
       const existingItem = prevItems.find(
         (item) => item.productId === product.id
       );
-      console.log(existingItem);
+
       if (existingItem !== undefined) {
         const updatedItem = {
           ...existingItem,
@@ -103,7 +111,7 @@ export const ShoppingCartProvider: React.FC<{ children: ReactNode }> = ({
       if (currentProduct) return each.quantity * 1000 * currentProduct.price;
       return 0;
     });
-    return eachTotal.reduce((total, item) => total + item);
+    return eachTotal.reduce((total, item) => total + item, 0);
   };
 
   const removeItemToDb = async (productId: number) => {
