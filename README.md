@@ -1,39 +1,47 @@
-## Getting Started
+# Fresh Goodies
 
-First, run the development server:
+Welcome to the Fresh Goodies project! This application helps you manage and discover fresh products with ease. Built with modern technologies to ensure a seamless user experience.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Then, run the dummy backend json-server
-```bash
-yarn db
-```
+- **Next.js**: A React framework for server-rendered applications and static websites.
+- **TypeScript**: A statically typed superset of JavaScript for improved code quality and maintainability.
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+- **useContext**: Utilized for state management to provide a product and category to apply filtering.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To get started with the project, follow these steps:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/iczky/fresh-goodies.git
+    cd fresh-goodies
+    ```
 
-## Learn More
+2. **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+3. **Run the development server**:
+    ```bash
+    npm run dev
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Run the dummy backend**:
+    ```bash
+    yarn db
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+5. Open your browser and navigate to `http://localhost:3000`.
 
-## Deploy on Vercel
+## Usage
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Filtering Product by Category
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The app utilize data pass from custom hook that build using `useContext` to hold context for each page.
+
+### State Management
+
+The app uses the `useContext` hook for state management. This approach simplifies the process of passing state and dispatch functions throughout the component tree, making the code more maintainable.
